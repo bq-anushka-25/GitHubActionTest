@@ -34,7 +34,8 @@ jobs:
       #     tenant-id: ${{ secrets.CLI_SECRET }}
       #     subscription-id: ${{ secrets.SUB_ID }}
       #     enable-AzPSSession: true 
-
+      - name : Azure Login
+        run: az login -u ${{secrets.USERNAME}} -p ${{secrets.PASSWORD}}
       - name: 'Terraform init'
         id: init
         run: terraform init          
