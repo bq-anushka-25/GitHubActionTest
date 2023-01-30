@@ -25,6 +25,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
+      - uses: elstudio/action-install-azure-cli@v1
 
       # Runs a single command using the runners shell
       - name: 'Az CLI login'
