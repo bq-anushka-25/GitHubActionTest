@@ -27,13 +27,13 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
 
       # Runs a single command using the runners shell
-      - name: 'Az CLI login'
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.CLI_ID }}
-          tenant-id: ${{ secrets.CLI_SECRET }}
-          subscription-id: ${{ secrets.SUB_ID }}
-          enable-AzPSSession: true 
+      # - name: 'Az CLI login'
+      #   uses: azure/login@v1
+      #   with:
+      #     client-id: ${{ secrets.CLI_ID }}
+      #     tenant-id: ${{ secrets.CLI_SECRET }}
+      #     subscription-id: ${{ secrets.SUB_ID }}
+      #     enable-AzPSSession: true 
 
       - name: 'Terraform init'
         id: init
