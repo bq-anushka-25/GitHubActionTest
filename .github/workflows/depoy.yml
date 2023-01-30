@@ -13,10 +13,15 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+
+    defaults:
+      run:
+        shell: bash
   steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      
+      - name: terraform 
+        uses: actions/checkout@v2
+
       # Runs a single command using the runners shell
       - name: 'Terraform init'
         id: init
