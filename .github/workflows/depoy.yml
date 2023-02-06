@@ -44,6 +44,6 @@ jobs:
         run: terraform apply -auto-approve 
 
       - name: 'Terraform destroy'
-        id: apply
+        id: destroy
         run: terraform destroy -auto-approve
           
