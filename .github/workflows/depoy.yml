@@ -18,11 +18,10 @@ jobs:
       - name: 'Az CLI login'
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          # client-id: "6bb1a01d-521f-454b-a806-1a57acbab266"
-          # tenant-id: "325cff79-aa80-4049-b025-3696f800ec93"
-          # subscription-id: "41949b4d-9dd4-4266-8e7f-f7610c3bc5f7"
-          # enable-AzPSSession: true 
+          client-id: ${{secrets.AZURE_AD_CLIENT_ID}}
+          tenant-id: ${{secrets.AZURE_AD_TENANT_ID}}
+          subscription-id: ${{ secrets.AZURE_AD_SUBSCRIPTION_ID }}
+          enable-AzPSSession: true 
       # - name : Azure Login
       #   run: az login -u "cloud_user_p_444f7640@azurelabs.linuxacademy.com" -p "PqMy02z68TD&Ex92J0jD"
       - name: 'Terraform init'
