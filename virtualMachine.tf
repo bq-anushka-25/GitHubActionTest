@@ -1,7 +1,7 @@
 resource "azurerm_linux_virtual_machine" "tf-vm1" {
   name                  = "tfVM1"
-  location              = azurerm_resource_group.tf-rg.location
-  resource_group_name   = azurerm_resource_group.tf-rg.name
+  location              = "West US"
+  resource_group_name   = "1-2564783a-playground-sandbox"
   network_interface_ids = [azurerm_network_interface.tfNic1.id]
   admin_username        = "adminuser"
   size                  = "Standard_DS1_v2"

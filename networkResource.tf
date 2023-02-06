@@ -1,29 +1,29 @@
 resource "azurerm_virtual_network" "Vnet1" {
   name                = "tf-Vnet"
   address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.tf-rg.location
-  resource_group_name = azurerm_resource_group.tf-rg.name
+  location            = "West US"
+  resource_group_name = "1-2564783a-playground-sandbox"
 }
 
 resource "azurerm_subnet" "tf-subnet" {
   name                 = "tf-VnetSubnet1"
-  resource_group_name  = azurerm_resource_group.tf-rg.name
+  resource_group_name  = "1-2564783a-playground-sandbox"
   virtual_network_name = azurerm_virtual_network.Vnet1.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
 resource "azurerm_public_ip" "tfPublicIp" {
   name                = "tfPublicIP1"
-  location            = azurerm_resource_group.tf-rg.location
-  resource_group_name = azurerm_resource_group.tf-rg.name
+  location            = "West US"
+  resource_group_name = "1-2564783a-playground-sandbox"
   allocation_method   = "Static"
   sku                 = "Basic"
 }
 
 resource "azurerm_network_interface" "tfNic1" {
   name                = "vm1-nic"
-  location            = azurerm_resource_group.tf-rg.location
-  resource_group_name = azurerm_resource_group.tf-rg.name
+  location            = "West US"
+  resource_group_name = "1-2564783a-playground-sandbox"
 
   ip_configuration {
     name                          = "ipconfig1"
@@ -34,8 +34,8 @@ resource "azurerm_network_interface" "tfNic1" {
 }
 resource "azurerm_network_security_group" "tf-nsg" {
   name                = "acceptanceSSH"
-  location            = azurerm_resource_group.tf-rg.location
-  resource_group_name = azurerm_resource_group.tf-rg.name
+  location            = "West US"
+  resource_group_name = "1-2564783a-playground-sandbox"
 
   security_rule {
     name                       = "sgRule1"
