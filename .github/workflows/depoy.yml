@@ -12,31 +12,19 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      ARM_CLIENT_ID: "6bb1a01d-521f-454b-a806-1a57acbab266"
-      ARM_CLIENT_SECRET: "dhU8Q~-qvhuqcYLWeqqWndFVSxD1rIjhQgJR-bQA"
-      ARM_SUBSCRIPTION_ID: "4cedc5dd-e3ad-468d-bf66-32e31bdb9148"
-      ARM_TENANT_ID: "2f4a9838-26b7-47ee-be60-ccc1fdec5953"
-      enable-AzPSSession: true
-      # allow-no-subscriptions: true
-
-    defaults:
-      run:
-        shell: bash
-
     steps:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
       - name: 'Az CLI login'
         uses: azure/login@v1
         with:
-          client-id: "6bb1a01d-521f-454b-a806-1a57acbab266"
-          tenant-id: "2f4a9838-26b7-47ee-be60-ccc1fdec5953"
-          subscription-id: "4cedc5dd-e3ad-468d-bf66-32e31bdb9148"
-          enable-AzPSSession: true 
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          # client-id: "6bb1a01d-521f-454b-a806-1a57acbab266"
+          # tenant-id: "325cff79-aa80-4049-b025-3696f800ec93"
+          # subscription-id: "41949b4d-9dd4-4266-8e7f-f7610c3bc5f7"
+          # enable-AzPSSession: true 
       # - name : Azure Login
       #   run: az login -u "cloud_user_p_444f7640@azurelabs.linuxacademy.com" -p "PqMy02z68TD&Ex92J0jD"
-
       - name: 'Terraform init'
         id: init
         run: terraform init          
