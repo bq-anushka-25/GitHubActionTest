@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
       - name: 'Az CLI login'
-        uses: azure/login@v1
+        uses: azure/actions/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           # client-id: "6bb1a01d-521f-454b-a806-1a57acbab266"
