@@ -16,7 +16,7 @@ jobs:
       ARM_CLIENT_ID: "6bb1a01d-521f-454b-a806-1a57acbab266"
       ARM_CLIENT_SECRET: "dhU8Q~-qvhuqcYLWeqqWndFVSxD1rIjhQgJR-bQA"
       ARM_SUBSCRIPTION_ID: "4cedc5dd-e3ad-468d-bf66-32e31bdb9148"
-      ARM_TENANT_ID: "3617ef9b-98b4-40d9-ba43-e1ed6709cf0d"
+      # ARM_TENANT_ID: "3617ef9b-98b4-40d9-ba43-e1ed6709cf0d"
       enable-AzPSSession: true
 
     defaults:
