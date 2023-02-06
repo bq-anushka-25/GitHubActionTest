@@ -22,8 +22,6 @@ jobs:
           tenant-id: ${{secrets.AZURE_AD_TENANT_ID}}
           subscription-id: ${{ secrets.AZURE_AD_SUBSCRIPTION_ID }}
           enable-AzPSSession: true 
-      # - name : Azure Login
-      #   run: az login -u "cloud_user_p_444f7640@azurelabs.linuxacademy.com" -p "PqMy02z68TD&Ex92J0jD"
       - name: 'Terraform init'
         id: init
         run: terraform init          
