@@ -21,9 +21,9 @@ jobs:
         uses: azure/login@v1
         with:
           # creds: ${{ secrets.AZURE_CREDENTIALS }}
-          client-id: '0bad7d0d-ac03-4b71-8d12-7f6433916bea'
-          tenant-id: '325cff79-aa80-4049-b025-3696f800ec93'
-          subscription-id: '4ded386b-ff71-40c7-9b4c-83cd556a5082'
+          client-id: ${{ secrets.AZURE_AD_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_AD_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_AD_SUBSCRIPTION_ID }}
           enable-AzPSSession: true 
       # - name: 'Terraform init'
       #   id: init
