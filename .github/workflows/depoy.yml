@@ -4,8 +4,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-environment:
-   name: secretForTerraform
+
 permissions:
   id-token: write
   contents: read
@@ -13,6 +12,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: secretForTerraform
     steps:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
