@@ -35,21 +35,21 @@ jobs:
 
       - name: 'Terraform init'
         id: init
-        run: terraform init
+        uses: hashicorp/terraform-github-actions/init@v0.4.0
         continue-on-error: true 
 
       - name: Terraform plan
         id: plan
-        run: terraform plan
+        uses: hashicorp/terraform-github-actions/plan@v0.4.0
         continue-on-error: true
                     
       - name: Terraform Apply
         id: apply
-        run: terraform apply --auto-approve
+        uses: hashicorp/terraform-github-actions/apply@v0.4.0
         continue-on-error: true 
 
-      - name: 'Terraform destroy'
-        id: destroy
-        run: terraform destroy --auto-approve
-        continue-on-error: true
+      # - name: 'Terraform destroy'
+      #   id: destroy
+      #   run: terraform destroy --auto-approve
+      #   continue-on-error: true
           
