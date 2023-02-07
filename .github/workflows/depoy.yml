@@ -21,6 +21,9 @@ jobs:
       - name: 'Checkout repo'
         uses: actions/checkout@v3
 
+      - uses: docker-practice/actions-setup-docker@master
+        timeout-minutes: 12
+
       - name: 'Install Terraform'
         uses: little-core-labs/install-terraform@v2.0.0
         with:
