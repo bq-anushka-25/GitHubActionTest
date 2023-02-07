@@ -1,7 +1,7 @@
-name: Terraform Code
+name: 'Terraform Deployment'
 on:
   push:
-    branches: [ main ]
+    branches: [ githubAction ]
 
 permissions:
   id-token: write
@@ -14,17 +14,18 @@ env:
 
 jobs:
   build:
-    runs-on: githubActionRunner
+    runs-on: ubuntu-latest
     environment:
       name: secretForTerraform
     steps:
-      - uses: actions/checkout@v3
-      - name: run
-        run: echo "${{ secrets.AZURE_AD_CLIENT_ID }}"
-      - name: Install Terraform
+      - name: 'Checkout repo'
+        uses: actions/checkout@v3
+
+      - name: 'Install Terraform'
         uses: little-core-labs/install-terraform@v2.0.0
         with:
           version: 0.13.4
+
       - name: 'Az CLI login'
         uses: azure/login@v1
         with:
@@ -32,17 +33,25 @@ jobs:
           tenant-id: ${{ secrets.AZURE_AD_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_AD_SUBSCRIPTION_ID }}
           enable-AzPSSession: true 
+
       - name: 'Terraform init'
         id: init
-        run: terraform init          
+        uses: hashicorp/terraform-github-actions/init@v0.4.0
 
-      - name: 'Terraform plan'
+      - name: Terraform format check
+        id: fmt
+        uses: hashicorp/terraform-github-actions/fmt@v0.3.7
+        continue-on-error: true          
+
+      - name: Terraform plan
         id: plan
-        run: terraform plan
+        uses: hashicorp/terraform-github-actions/plan@v0.4.0
+        continue-on-error: true
                     
-      - name: 'Terraform apply'
+      - name: Terraform Apply
         id: apply
-        run: terraform apply -auto-approve 
+        uses: hashicorp/terraform-github-actions/apply@v0.4.0
+        continue-on-error: true 
 
       - name: 'Terraform destroy'
         id: destroy
