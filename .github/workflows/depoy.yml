@@ -21,6 +21,9 @@ jobs:
       - name: 'Checkout repo'
         uses: actions/checkout@v3
 
+      - name: 'Install Azure Login'
+        run: sudo apt install azure-cli
+
       - name: 'Install Terraform'
         uses: little-core-labs/install-terraform@v2.0.0
         with:
